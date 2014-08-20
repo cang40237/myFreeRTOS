@@ -313,15 +313,15 @@ GAME_Update()
 	void
 GAME_Render()
 {
-	LCD_SetTextColor( LCD_COLOR_Red );
+	LCD_SetTextColor( LCD_COLOR_RED );
 	LCD_DrawFullRect( player1X, player1Y, player1W, player1H );
 	LCD_DrawFullRect( player2X, player2Y, player2W, player2H );
 	LCD_DrawCircle( ballX, ballY, ballSize );
-	LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
+		LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
 	if(p1c > 9 || p2c >9){
 		p1c = p2c = 0;
 	}
 	
-	LCD_DisplayChar(LCD_PIXEL_HEIGTH/2+5,10, 0x30+p2c)
-	LCD_DisplayChar(LCD_PIXEL_HEIGTH/2-5,10, 0x30+p1c)
+	LCD_DisplayChar(LCD_PIXEL_HEIGHT / 2+10,10, 0x30+p2c);
+	LCD_DisplayChar(LCD_PIXEL_HEIGHT / 2-30,10, 0x30+p1c);
 }
