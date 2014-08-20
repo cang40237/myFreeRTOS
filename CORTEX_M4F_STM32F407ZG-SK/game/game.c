@@ -316,10 +316,24 @@ GAME_Render()
 	LCD_SetTextColor( LCD_COLOR_RED );
 	LCD_DrawFullRect( player1X, player1Y, player1W, player1H );
 	LCD_DrawFullRect( player2X, player2Y, player2W, player2H );
-	LCD_DrawCircle( ballX, ballY, ballSize );
-		LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
+	//LCD_DrawFullEllipse(ballX, ballY, 5, 10);
+	LCD_DrawFullRect( ballX, ballY, ballSize, ballSize );
+	//LCD_DrawCircle( ballX, ballY, ballSize );
+
+	LCD_DrawLine( 10, LCD_PIXEL_HEIGHT / 2, LCD_PIXEL_WIDTH - 20, LCD_DIR_HORIZONTAL );
+		
 	if(p1c > 9 || p2c >9){
+		
+                LCD_Clear(0x0000);
+		if(p1c > p2c){
+			LCD_DisplayStringLine( LCD_PIXEL_HEIGHT/2, "P1 win" );
+		}
+		else{
+			LCD_DisplayStringLine( LCD_PIXEL_HEIGHT/2, "P2 win" );
+		}
 		p1c = p2c = 0;
+		vTaskDelay(500);
+                LCD_Clear(0x0000);
 	}
 	
 	LCD_DisplayChar(LCD_PIXEL_HEIGHT / 2+10,10, 0x30+p2c);
